@@ -4,7 +4,7 @@ import {NavLink, Outlet, Route, Routes, useParams} from 'react-router-dom';
 
 const Profile = () => {
 
-    const params = useParams()
+    const params = useParams<'x' | 'y'>()
 
     const some = params
 
@@ -19,22 +19,13 @@ function App() {
             <NavLink to={'/'}>main</NavLink>---
             <NavLink to={'/login'}>login</NavLink>---
             <NavLink to={'/profile'}>profile</NavLink>---
-            <NavLink to={'/profile/settings'}>settings</NavLink>
+            <NavLink to={'/profile/1'}>profile/1</NavLink>
 
             <Routes>
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>main</div>}/>
                 <Route path={'/login'} element={<div>login</div>}/>
-                <Route path={'/profile'} element={(
-                    <div>
-                        profile
-                        <Outlet/>
-                    </div>
-                )}>
-                    <Route path={'*'} element={<div>Profile page not found</div>}/>
-                    <Route path={':id'} element={<div>id</div>}/>
-                    <Route path={'settings'} element={<div>settings</div>}/>
-                </Route>
+                <Route path={'/profile/:x/:y'} element={<Profile/>}/>
             </Routes>
 
 
