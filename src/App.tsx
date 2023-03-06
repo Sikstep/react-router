@@ -1,6 +1,17 @@
 import React from 'react';
 import './App.css';
-import {NavLink, Route, Routes} from 'react-router-dom';
+import {NavLink, Outlet, Route, Routes, useParams} from 'react-router-dom';
+
+const Profile = () => {
+
+    const params = useParams()
+
+    const some = params
+
+    console.log(some)
+
+    return <div>profile</div>
+}
 
 function App() {
     return (
@@ -14,12 +25,22 @@ function App() {
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>main</div>}/>
                 <Route path={'/login'} element={<div>login</div>}/>
-                <Route path={'/profile'} element={<div>profile</div>}/>
-                <Route path={'/profile/settings'} element={<div>settings</div>}/>
+                <Route path={'/profile'} element={(
+                    <div>
+                        profile
+                        <Outlet/>
+                    </div>
+                )}>
+                    <Route path={'*'} element={<div>Profile page not found</div>}/>
+                    <Route path={':id'} element={<div>id</div>}/>
+                    <Route path={'settings'} element={<div>settings</div>}/>
+                </Route>
             </Routes>
 
+
         </div>
-    );
+    )
+        ;
 }
 
 export default App;
