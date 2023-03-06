@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
-import {NavLink, Route, Routes} from 'react-router-dom';
+import {Navigate, NavLink, Route, Routes, useNavigate} from 'react-router-dom';
 import s from './App.module.css'
 
 // const Profile = () => {
@@ -13,6 +13,22 @@ import s from './App.module.css'
 //
 //     return <div>profile</div>
 // }
+
+const Profile = () => {
+    const navigate = useNavigate()
+
+    // useEffect(() => {
+    //     if (true) navigate('/login')
+    // }, [])
+
+    return (
+        <div>
+
+            profile
+            <button onClick={() => {navigate(-1)}}>logout</button>
+        </div>
+    )
+}
 
 function App() {
     return (
@@ -46,7 +62,7 @@ function App() {
                 <Route path={'/*'} element={<div>404</div>}/>
                 <Route path={'/'} element={<div>main</div>}/>
                 <Route path={'/login'} element={<div>login</div>}/>
-                <Route path={'/profile'} element={<div>profile</div>}/>
+                <Route path={'/profile'} element={<Profile/>}/>
                 <Route path={'/profile/settings'} element={<div>settings</div>}/>
             </Routes>
 
