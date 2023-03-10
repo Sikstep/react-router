@@ -1,39 +1,29 @@
 import React from 'react';
-import {PagesType} from '../data/dataState';
+import {PagesType} from '../../dataState/dataState';
 import {useParams} from 'react-router-dom';
-import {Error404} from './Error404';
-import { Content } from './Content';
+import {Content} from './Content';
 
-type PropsType = {
-    pages: PagesType[]
+type PagePropsType = {
+    pages: Array<PagesType>
 }
-export const Page: React.FC<PropsType> = ({pages, ...otheProps}) => {
 
-    const params = useParams()
-    let magicNumber = Number(params.id)
-    // console.log(params)
-    // if (typeof Number(params) !== 'number') {
-    //     params = 0;
-    // }
+
+export const Page = (props: PagePropsType) => {
+    const param = useParams()
+    let newParam = Number(param);
+    // console.log('params: ', Number(param.id))
 
     return (
 
-        <>
-            {magicNumber <= pages.length - 1
-                ? <Content heading={pages[Number(params.id)].heading} pages={pages[Number(params.id)].about}/>
-                : <Error404/>
-            }
-
-        </>
-
+        <Content heading={props.pages[Number(param.id)].heading} pages={props.pages[Number(param.id)].about}/>
         // <div>
-        //    <div>{pages[Number(params.id)].heading}</div>
-        //     <br/>
-        //    <div>{pages[Number(params.id)].about}</div>
-        //
-
+        //     <div>
+        //         {props.pages[Number(param.id)].heading}
+        //     </div>
+        //     <div>
+        //         {props.pages[Number(param.id)].about}
+        //     </div>
         // </div>
-    )
-}
-
+    );
+};
 
