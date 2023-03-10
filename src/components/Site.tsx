@@ -4,6 +4,7 @@ import {Navigate, NavLink, Route, Routes} from 'react-router-dom';
 import {Error404} from './pages/Error404';
 import {Page} from './pages/Page';
 import {dataState} from './data/dataState';
+import styled from 'styled-components';
 
 
 export const Site = () => {
@@ -14,9 +15,9 @@ export const Site = () => {
             <div className={styles.body}>
                 <div className={styles.nav}>
                     {/*<div><NavLink to={'/page1'} className={({isActive})=> isActive ? styles.active : styles.navLink}>PageOne</NavLink></div>*/}
-                    <div><NavLink to={'/page/0'} className={({isActive})=> isActive ? styles.active : styles.navLink}>PageOne</NavLink></div>
-                    <div><NavLink to={'/page/1'} className={({isActive})=> isActive ? styles.active : styles.navLink}>PageTwo</NavLink></div>
-                    <div><NavLink to={'/page/2'} className={({isActive})=> isActive ? styles.active : styles.navLink}>PageThree</NavLink></div>
+                    <NavWrapper><NavLink to={'/page/0'}>PageOne</NavLink></NavWrapper>
+                    <NavWrapper><NavLink to={'/page/1'} >PageTwo</NavLink></NavWrapper>
+                    <NavWrapper><NavLink to={'/page/2'} >PageThree</NavLink></NavWrapper>
                 </div>
                 <div className={styles.content}>
                     <Routes>
@@ -32,6 +33,26 @@ export const Site = () => {
         </div>
     );
 };
+
+
+const NavWrapper = styled.div`
+  margin-left: 10px;
+  font-size: 20px;
+
+  & > a {
+    text-decoration: none;
+    color: #1e3786;
+  }
+
+  & > a.active {
+    text-decoration: none;
+    color: #03eaff;
+  }
+
+  & > a:hover {
+    color: steelblue; /* Цвет ссылки */
+  }
+`
 
 
 // >--------------------------------------------------------------------------------------
