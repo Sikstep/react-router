@@ -3,9 +3,9 @@ import styles from './components/Site.module.css';
 import {Navigate, NavLink, Route, Routes} from 'react-router-dom';
 import {Adidas} from './components/pages/Adidas';
 import {Puma} from './components/pages/Puma';
-import {Abibas} from './components/pages/Abibas';
 import {Error404} from './components/pages/Error404';
 import Model from './components/pages/Model';
+import {Abibas} from './components/pages/Abibas';
 
 const PATH = {
     PAGE1: '/adidas',
@@ -14,7 +14,9 @@ const PATH = {
     PAGE_ERROR: '/page/error404'
 } as const
 
+
 function App() {
+
     return (
         <div>
             <div className={styles.header}><h1>HEADER</h1></div>
@@ -28,9 +30,9 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Navigate to={PATH.PAGE1}/>}/>
                         <Route path={PATH.PAGE1} element={<Adidas/>}/>
-                        <Route path={PATH.PAGE1} element={<Adidas/>}/>
                         <Route path={PATH.PAGE2} element={<Puma/>}/>
-                        <Route path={'/adidas/:id'} element={<Model/>}/>
+                        <Route path={PATH.PAGE3} element={<Abibas/>}/>
+                        <Route path={'/:brand/:id'} element={<Model/>}/>
 
 
                         {/*<Route path={PATH.PAGE_ERROR} element={<Error404/>}/>*/}
