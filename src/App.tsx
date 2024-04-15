@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import styles from "./components/Site.module.css";
+import React from 'react';
+import styles from './components/Site.module.css';
 import {Route, Routes} from 'react-router-dom';
 import {PageOne} from './components/pages/PageOne';
 import {PageTwo} from './components/pages/PageTwo';
