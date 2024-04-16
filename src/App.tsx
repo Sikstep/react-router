@@ -6,11 +6,13 @@ import {Puma} from './components/pages/Puma';
 import {Error404} from './components/pages/Error404';
 import Model from './components/pages/Model';
 import {Abibas} from './components/pages/Abibas';
+import {Prices} from './components/pages/Prices';
 
 const PATH = {
     PAGE1: '/adidas',
     PAGE2: '/puma',
     PAGE3: '/abibas',
+    PAGE4: '/prices',
     PAGE_ERROR: '/page/error404'
 } as const
 
@@ -25,6 +27,7 @@ function App() {
                     <div><NavLink to={PATH.PAGE1} className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>Adidas</NavLink></div>
                     <div><NavLink to={PATH.PAGE2} className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>Puma</NavLink></div>
                     <div><NavLink to={PATH.PAGE3} className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>Abibas</NavLink></div>
+                    <div><NavLink to={PATH.PAGE4} className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>Prices</NavLink></div>
                 </div>
                 <div className={styles.content}>
                     <Routes>
@@ -32,6 +35,7 @@ function App() {
                         <Route path={PATH.PAGE1} element={<Adidas/>}/>
                         <Route path={PATH.PAGE2} element={<Puma/>}/>
                         <Route path={PATH.PAGE3} element={<Abibas/>}/>
+                        <Route path={PATH.PAGE4} element={<Prices/>}/>
                         <Route path={'/:brand/:id'} element={<Model/>}/>
 
 
@@ -43,7 +47,7 @@ function App() {
 
                 </div>
             </div>
-            <div className={styles.footer}>abibas 2023</div>
+            <div className={styles.footer}>abibas 2024</div>
         </div>
     );
 }

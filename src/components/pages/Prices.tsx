@@ -1,8 +1,12 @@
-import {useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import styles from './Prices.module.css';
+import {useSearchParams} from 'react-router-dom';
 
 type Props = {};
 export const Prices = (props: Props) => {
+
+    let [searchParams, setSearchParams] = useSearchParams();
+
     const sneakers = [
         {
             manufacturer: "Adidas",
@@ -35,16 +39,26 @@ export const Prices = (props: Props) => {
             onSale: true
         }
     ];
-
     const [filteredSneakers, setFilteredSneakers] = useState(sneakers);
 
     function handleOnSale() {
-
+        setSearchParams({onSale:'true'})
+        //
     }
 
     function handleReset() {
-
+        setSearchParams({})
+        //
     }
+
+    useEffect(() => {
+        if (searchParams.get('onSale') === 'true') {
+            setFilteredSneakers(filteredSneakers.filter(onSale => onSale.onSale))
+        } else {
+            setFilteredSneakers(sneakers)
+        }
+    },[searchParams])
+
 
 
     return (
