@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useState} from 'react';
 import styles from './Prices.module.css';
 import {useSearchParams} from 'react-router-dom';
 
@@ -7,6 +7,7 @@ export const Prices = (props: Props) => {
 
     let [searchParams, setSearchParams] = useSearchParams();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const sneakers = [
         {
             manufacturer: "Adidas",
@@ -57,7 +58,7 @@ export const Prices = (props: Props) => {
         } else {
             setFilteredSneakers(sneakers)
         }
-    },[searchParams])
+    },[filteredSneakers, searchParams, sneakers])
 
 
 
